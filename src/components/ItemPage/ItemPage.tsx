@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { CartContext } from '../../CartContext';
 import { useParams } from "react-router-dom"
 import { getItemById } from "../../shopApi";
 import Navbar from "../Navbar/Navbar";
@@ -13,6 +14,7 @@ function ItemPage() {
     const { itemId } = useParams();
     const [item, setItem] = useState(initialItem);
     const [quantity, setQuantity] = useState(1);
+    const cart = useContext(CartContext);
 
     useEffect(() => {
         getItemById(itemId!).then(data => {
@@ -28,6 +30,7 @@ function ItemPage() {
     return (
         <>
         <Navbar />
+        <CartContext.Provider value={cart}>
         <div className="item-page">
             <p><b>{item.title}</b></p>
             <p>{item.description}</p>
@@ -35,8 +38,9 @@ function ItemPage() {
             <p>{item.price}</p>
             <p>id: {item.id}</p>
             <QuantityInput value={quantity} onChange={handleChange}/>
-            <button type="button">Add to cart</button>
+            <button type="button" onClick={() => cart.push({id: item.id, quantity})}>Add to cart</button>
         </div>
+        </CartContext.Provider>
         </>
     )
 }
