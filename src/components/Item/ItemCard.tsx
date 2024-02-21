@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import './ItemCard.scss'
 
 export interface ItemProps {
@@ -8,15 +9,15 @@ export interface ItemProps {
     price: number;
     id: number;
     rating: Rating;
-
 }
 
 export interface Rating {
-    rate: number;
-    count: number;
+    rate?: number;
+    count?: number;
 }
 
 function ItemCard({ item }: { item: ItemProps }): JSX.Element {
+    const navigate = useNavigate();
     return (
         <div className="item-card">
             <p><b>{item.title}</b></p>
@@ -25,7 +26,7 @@ function ItemCard({ item }: { item: ItemProps }): JSX.Element {
             <p>{item.price}</p>
             <p>id: {item.id}</p>
             <p>Rating: {item.rating.rate}</p>
-            <button type="button">Buy now</button>
+            <button type="button" onClick={() => navigate(`/item/${item.id}`)}>Buy now</button>
         </div>
     )
 }
