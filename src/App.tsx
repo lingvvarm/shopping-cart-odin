@@ -1,10 +1,11 @@
-import Navbar from './components/Navbar/Navbar'
 import './App.scss'
+import AppBar from './components/AppBar/AppBar'
+import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
   return (
     <>
-      <Navbar />
+      <AppBar/>
       <p>Hello!</p>
     </>
   )

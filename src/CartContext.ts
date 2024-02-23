@@ -1,7 +1,8 @@
 import { createContext } from 'react';
 
-export interface CartContextType {
-    push: (item: { id: number; quantity: number }) => void;
+export interface CartType {
+    id: number;
+    quantity: number;
 }
 
-export const CartContext = createContext<CartContextType | Array<object>>([]);
+export const CartContext = createContext<Array<CartType>>([]);
