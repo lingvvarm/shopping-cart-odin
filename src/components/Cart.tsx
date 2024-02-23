@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import { ListGroup, Container, Col, Row, Button } from 'react-bootstrap';
-import AppBar from '../AppBar/AppBar';
-import { CartContext, CartType } from '../../CartContext';
-import { getItemById } from '../../shopApi';
-import QuantityInput from '../Quantity';
-import { Item } from '../ItemPage/ItemPage';
+import AppBar from './AppBar';
+import { CartContext, CartType } from '../CartContext';
+import { getItemById } from '../shopApi';
+import QuantityInput from './Quantity';
+import { Item } from './ItemPage';
 import { useNavigate } from 'react-router-dom';
 
 export interface cartItem extends Item {
@@ -106,7 +106,7 @@ function Cart() {
                 </ListGroup.Item>
               ))}
               <h4 className="mt-4 text-end">Total: ${totalPrice}</h4>
-              <Button type="button" className="btn btn-primary btn-lg ms-auto mt-2" style={{ width: '300px' }}>
+              <Button type="button" className="btn btn-primary btn-lg ms-auto mt-2" style={{ width: '300px' }} onClick={() => window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ')}>
                 Proceed to checkout
               </Button>
             </ListGroup>

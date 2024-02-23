@@ -1,10 +1,10 @@
 import { useEffect, useState, useContext } from "react";
-import { CartContext } from '../../CartContext';
-import { useParams } from "react-router-dom"
-import { getItemById } from "../../shopApi";
-import AppBar from "../AppBar/AppBar";
-import { ItemProps, Rating } from "../Item/ItemCard";
-import QuantityInput from "../Quantity";
+import { CartContext } from '../CartContext';
+import { useNavigate, useParams } from "react-router-dom"
+import { getItemById } from "../shopApi";
+import AppBar from "./AppBar";
+import { ItemProps, Rating } from "./ItemCard";
+import QuantityInput from "./Quantity";
 import { Container, Row, Col, Button, Image, Alert } from 'react-bootstrap';
 
 export interface Item extends Omit<ItemProps, 'rating'> {
@@ -17,6 +17,13 @@ function ItemPage() {
   const [quantity, setQuantity] = useState(1);
   const cart = useContext(CartContext);
   const [purchased, setPurchased] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (itemId && Number(itemId) > 20) {
+        navigate('/');
+    }
+  })
 
   useEffect(() => {
     getItemById(itemId!).then(data => {

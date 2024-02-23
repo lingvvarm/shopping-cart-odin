@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Badge from 'react-bootstrap/Badge';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
-import { CartContext } from '../../CartContext';
+import { CartContext } from '../CartContext';
 
 function AppBar() {
   const cart = useContext(CartContext);

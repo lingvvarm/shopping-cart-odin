@@ -1,8 +1,8 @@
-import ItemCard from '../Item/ItemCard';
-import { ItemProps } from '../Item/ItemCard';
-import { getItems } from '../../shopApi';
+import ItemCard from './ItemCard';
+import { ItemProps } from './ItemCard';
+import { getItems } from '../shopApi';
 import { useState, useEffect } from 'react';
-import AppBar from '../AppBar/AppBar';
+import AppBar from './AppBar';
 import { Container } from 'react-bootstrap';
 
 function Shop() {
